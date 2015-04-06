@@ -58,7 +58,7 @@ app.use(bodyParser.urlencoded());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(cors({origin:'http://angular-blogger.herokuapp.com',credentials:true}));
+app.use(cors({origin:'https://angular-blogger.herokuapp.com',credentials:true}));
 
 app.use(session({secret: '$2a$10$.wpd8jJriLDRXwptB8jI.usYQUELftTl/.OJ2DRuR8T/qtlUb7WEm',httpOnly: true,saveUninitialized: true, resave: true,cookie: { maxAge: 1800000 }}));
 app.use(passport.initialize());
