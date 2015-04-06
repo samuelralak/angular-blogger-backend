@@ -33,11 +33,17 @@ var dbName='spblogger';
 
 var connectionString='mongodb://localhost:27017/'+dbName;
 
-if(process.env.OPENSHIFT_MONGODB_DB_URL){
-  connectionString = process.env.OPENSHIFT_MONGODB_DB_URL + dbName;
+if(process.env.MONGOLAB_URI){
+  connectionString = process.env.MONGOLAB_URI;
 }
 
-mongoose.connect(connectionString);
+mongoose.connect(connectionString, function (err, res) {
+    if (err) {
+        console.log ('ERROR connecting to: ' + connectionString + '. ' + err);
+    } else{
+        console.log ('Succeeded connected to: ' + connectionString);
+    };
+});
 
 install.generateAdmin();
 
